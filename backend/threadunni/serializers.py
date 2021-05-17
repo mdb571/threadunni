@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .twitter import validate_twitter
-import environ
+from .twitterr import validate_twitter
+import os
 from rest_framework.exceptions import AuthenticationFailed
 from .register import register_user
 
@@ -18,11 +18,11 @@ class TwitterSerializer(serializers.Serializer):
             access_token_key, access_token_secret)
 
         try:
-            username = user_info['id_str']
-            email = user_info['email']
+            username = user_info['screen_name']
+        
         except:
             raise serializers.ValidationError(
                 'The tokens are invalid or expired. Please login again.'
             )
 
-        return register_user( username=username, email=email)
+        return register_user(username=username)

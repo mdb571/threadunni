@@ -12,17 +12,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
-import environ
 import datetime
 import os
 
-env = environ.Env(DEBUG=(bool, False))
+from my_secrets import secrets
+
+SECRET_KEY = secrets.SECRET_KEY
 # reading .env file
-environ.Env.read_env()
 
 # False if not in os.environ
-DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
+DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +38,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'threadunni.User'
 
 # Application definition
 
