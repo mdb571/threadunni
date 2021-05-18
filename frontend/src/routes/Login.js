@@ -5,6 +5,12 @@ import TwitterLogin from "react-twitter-login";
 export default function Login(props) {
     const authHandler = (err, data) => {
         console.log(err, data);
+        
+        if (data) {
+          localStorage.setItem('oauth_token',data.oauth_token)
+          localStorage.setItem('oauth_token_secret',data.oauth_token_secret)
+        }
+       
       };
   return (
     <div>
@@ -14,8 +20,8 @@ export default function Login(props) {
       </p>
       <TwitterLogin
         authCallback={authHandler}
-        consumerKey={process.env.REACT_APP_CONSUMER_KEY}
-        consumerSecret={process.env.REACT_APP_CONSUMER_SECRET}
+        consumerKey={"2bEtUE2pdoBoA3heSLm7fp3Bm"}
+        consumerSecret={"xTHNkAmC94EiWyluyKXov8Jvi8Zt8X6m8KSMZNHhfrErdkfrUO"}
       />
     </div>
   );
