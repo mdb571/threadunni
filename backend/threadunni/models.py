@@ -53,7 +53,17 @@ class User(AbstractBaseUser,PermissionsMixin):
         }
 
 
-# class Thread(models.Model):
+class Thread(models.Model):
+    id=models.AutoField(primary_key=True)
+    username=models.ManyToManyField(User,default=1)
+    thread_id=models.CharField(max_length=256,unique=True)
+    thread=models.TextField()
+    link=models.CharField(max_length=250,unique=True)
+    owner=models.CharField(max_length=64)
+    owner_photo=models.CharField(max_length=256)
+    title=models.CharField(max_length=256,default='Thread')
+    thread_thumbnail=models.CharField(max_length=250)
+    media_url=models.CharField(max_length=250,default="")
 
-#     user=models.ForeignKey(User,on_delete=models.CASCADE)
-#     thread=models.TextField(null=False)
+    def __str__():
+        return self.owner
