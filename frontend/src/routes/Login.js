@@ -20,10 +20,8 @@ export default function Login(props) {
       </p>
       <TwitterLogin
         authCallback={authHandler}
-        // consumerKey={process.env.REACT_APP_TWITTER_API_KEY}
-        // consumerSecret={process.env.REACT_APP_TWITTER_CONSUMER_SECRET}
-        consumerKey={"bSEjCJ5NnCQpol7lPEg3iAysB"}
-        consumerSecret={"wkSn35ris1WLVFi59oBtCr6IDYYisSlbRTv0i9NxsRFXKiG7ov"}
+        consumerKey={process.env.REACT_APP_TWITTER_API_KEY}
+        consumerSecret={process.env.REACT_APP_TWITTER_CONSUMER_SECRET}
       />
     </div>
   );
