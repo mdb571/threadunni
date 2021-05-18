@@ -33,6 +33,7 @@ class AppUser(BaseUserManager):
 
 class User(AbstractBaseUser,PermissionsMixin):
     username=models.CharField(max_length=255,unique=True)
+    profile_pic=models.CharField(max_length=255,default="https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)

@@ -6,7 +6,7 @@ import repackage
 repackage.up()
 from my_secrets import secrets
 
-def register_user(username):
+def register_user(username,profile_pic):
     filtered_by_username = User.objects.filter(username=username)
 
     if filtered_by_username.exists():
@@ -20,10 +20,10 @@ def register_user(username):
 
     else:
         # user = {
-        #     'username': username,
-        #     'password': secrets.SECRET_PW}
+        #      'username': username,
+        #      'password': secrets.SECRET_PW}
         user = User.objects.create_user(username,secrets.SECRET_PW)
-        print(user.username) 
+        user.profile_pic=profile_pic 
         user.save()
 
         new_user = authenticate(

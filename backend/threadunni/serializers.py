@@ -3,6 +3,7 @@ from .twitterr import validate_twitter
 import os
 from rest_framework.exceptions import AuthenticationFailed
 from .register import register_user
+from .models import Thread,User
 
 class TwitterSerializer(serializers.Serializer):
     
@@ -19,10 +20,21 @@ class TwitterSerializer(serializers.Serializer):
 
         try:
             username = user_info['screen_name']
-        
+            profile_pic=user_info['profile_image_url_https']
         except:
             raise serializers.ValidationError(
                 'The tokens are invalid or expired. Please login again.'
             )
 
-        return register_user(username=username)
+        return register_user(username=username,profile_pic=profile_pic)
+
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields=('username','profile_pic','created_at',)
+
+
+class ThreadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Thread
+        fields='__all__'
