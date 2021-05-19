@@ -7,7 +7,7 @@ repackage.up()
 from my_secrets import secrets
 
 
-# def validate_twitter(access_token_key,access_token_secret):
+
 def validate_twitter(access_token_key,access_token_secret):
 
     consumer_api_key = secrets.TWITTER_API_KEY
@@ -26,10 +26,7 @@ def validate_twitter(access_token_key,access_token_secret):
         return user_profile_info.__dict__
 
     except Exception as identifier:
-            print(identifier)
-            # raise serializers.ValidationError({
-            #     "tokens": ["The tokens are invalid or expired"]})
+            
+            raise serializers.ValidationError({
+               "tokens": ["The tokens are invalid or expired"]})
 
-
-# test=validate_twitter("1239557300567674882-aKy8ZrTFDvMRG7ZlvOmKiE7nseQqFx","q2BVeoL3FIJoZcr3mZIwB3nFDOQWwcsvnsgrFL0Uhq1Op")
-# print(test)
