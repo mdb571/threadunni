@@ -39,4 +39,4 @@ class ThreadSerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Thread
-        fields='__all__'
+        exclude = ('id', )

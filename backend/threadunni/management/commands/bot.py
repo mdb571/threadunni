@@ -127,7 +127,7 @@ class Command(BaseCommand):
                         
                         if thread_reader:
                             Thread.objects.filter(thread_id=status.in_reply_to_status_id).first().username.add(thread_reader)
-
+                        thread_requester=status.user.screen_name
                         api.update_status(
                         status=f'@{status.user.screen_name} Your collected thread is ready '+ str(status.id),
                         in_reply_to_status_id=tweet.id,
@@ -182,7 +182,7 @@ class Command(BaseCommand):
                             print(e)
                         
                     title="A Thread by "+ owner_name
-                    new_thread=Thread(thread_id=thread_id,thread=content_text,link="/thread/"+str(thread_id),owner=owner_name,owner_photo=photo,title=title,thread_thumbnail=thum_url,media_url=media_url)
+                    new_thread=Thread(thread_id=thread_id,thread=content_text,link="/thread/"+str(thread_id),username=thread_requester,owner=owner_name,owner_photo=photo,title=title,thread_thumbnail=thum_url,media_url=media_url)
                     logger.info("Thread Created")
                     api.update_status(
                         status=f'@{status.user.screen_name} Your collected thread is ready '+ str(status.id),
