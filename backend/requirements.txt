@@ -3,7 +3,6 @@ beautifulsoup4==4.9.3
 certifi==2020.12.5
 chardet==4.0.0
 coreapi==2.3.3
-coreschema==0.0.4
 dj-database-url==0.5.0
 Django==3.2.3
 django-cors-headers==3.7.0
@@ -39,3 +38,4 @@ sqlparse==0.4.1
 tweepy==3.10.0
 uritemplate==3.0.1
 urllib3==1.26.4
+coreschema==0.0.4
