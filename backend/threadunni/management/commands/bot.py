@@ -98,7 +98,7 @@ class Command(BaseCommand):
         since=Since.objects.latest('since_int')
         logger.info("Retrieving mentions")
         since_id=int(str(since))
-        title="Thread"
+        
         media_url="No Media"
         
         new_since_id = since_id
@@ -181,7 +181,7 @@ class Command(BaseCommand):
                         except Exception as e:
                             print(e)
                         
-
+                    title="A Thread by "+ owner_name
                     new_thread=Thread(thread_id=thread_id,thread=content_text,link="/thread/"+str(thread_id),owner=owner_name,owner_photo=photo,title=title,thread_thumbnail=thum_url,media_url=media_url)
                     logger.info("Thread Created")
                     api.update_status(
