@@ -18,7 +18,7 @@ import dj_database_url
 
 from my_secrets import secrets
 
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # reading .env file
 
 
