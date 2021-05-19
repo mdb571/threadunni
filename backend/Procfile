@@ -1,1 +1,2 @@
 web: gunicorn backend.wsgi --log-file -
+clock: python scheduler.py
