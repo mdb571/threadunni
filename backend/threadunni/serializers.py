@@ -29,12 +29,14 @@ class TwitterSerializer(serializers.Serializer):
         return register_user(username=username,profile_pic=profile_pic)
 
 class LoginSerializer(serializers.ModelSerializer):
+
     class Meta:
         model=User
         fields=('username','profile_pic','created_at',)
 
 
 class ThreadSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model=Thread
         fields='__all__'

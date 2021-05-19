@@ -30,17 +30,16 @@ class LoginView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     
-class ThreadView(RetrieveAPIView):
+class ThreadView(APIView):
     permission_classes = [IsAuthenticated,]
-    serializer_class=ThreadSerializer
-
-    def get_queryset(self):
-        return Thread.objects.fiter(username=self.request.user)
+   
+    def get_object(self):
+        return Thread.objects.get(thread_id=self.kwargs['thread_id'])
 
     def get(self,request,*args,**kwargs):
-        seriaizer = self.get_serializer(self.get_object())
-        serializer.is_valid(raise_exception=True)
-        return Response(data,status=status.HTTP_200_OK)
+        serializer = ThreadSerializer(self.get_object())
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 

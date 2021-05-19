@@ -55,9 +55,9 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 
 class Thread(models.Model):
-    id=models.AutoField(primary_key=True)
+
     username=models.ManyToManyField(User,default=1)
-    thread_id=models.CharField(max_length=256,unique=True)
+    thread_id=models.IntegerField(unique=True)
     thread=models.TextField()
     link=models.CharField(max_length=250,unique=True)
     owner=models.CharField(max_length=64)
@@ -66,5 +66,14 @@ class Thread(models.Model):
     thread_thumbnail=models.CharField(max_length=250)
     media_url=models.CharField(max_length=250,default="")
 
-    def __str__():
+    def __str__(self):
         return self.owner
+
+class Since(models.Model):
+    since_int=models.CharField(max_length=250,unique=True)
+
+    class Meta:
+         verbose_name = "Since ID"
+
+    def __str__(self):
+        return self.since_int
