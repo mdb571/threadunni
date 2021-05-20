@@ -50,7 +50,7 @@ export default function Login(props) {
 
         
       </p>
-      <div style={{paddingTop:'30vh'}}>
+      <div style={{paddingTop:'10vh'}}>
       
      {!user? <TwitterLogin
         authCallback={authHandler}
