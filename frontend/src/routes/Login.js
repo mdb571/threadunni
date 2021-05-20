@@ -40,13 +40,9 @@ export default function Login(props) {
     <div className="pt-5">
       <h3>Login | ThreadUnni</h3>
       <p className="text-muted">Documenting Threads Since BFH!</p>
-
-//       <div class="alert alert-danger mx-auto" style={{width:"50%"}} role="alert">
-//       Login to access your threads and archive PDFs. 
-// </div>
       <p>
 
-      <small> Login to access your threads and archive PDFs. </small>
+      <small class="text-danger"> Login to access your threads and archive PDFs. </small>
 
         
       </p>
