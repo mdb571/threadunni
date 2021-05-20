@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -12,68 +12,61 @@ import Thread from "./routes/Thread";
 function App() {
   const [user, setUser] = useState(false);
 
-  const handleLogin =  (e) => {
-    let username= localStorage.getItem('username');
-    let token = localStorage.getItem('token')
-    
-    setUser(true)
+  const handleLogin = (e) => {
+    let username = localStorage.getItem("username");
+    let token = localStorage.getItem("token");
+
+    setUser(true);
     // alert('Login')
   };
 
   const handleLogout = (e) => {
     e.preventDefault();
     setUser(false);
-    localStorage.removeItem('username')
-    localStorage.removeItem('token')
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
   };
 
   useEffect(() => {
-  let username= localStorage.getItem('username');
-  let token = localStorage.getItem('token')
-  
-  if(token){
-    setUser(true)
-  }
-  }, [])
+    let username = localStorage.getItem("username");
+    let token = localStorage.getItem("token");
+
+    if (token) {
+      setUser(true);
+    }
+  }, []);
 
   return (
     <div>
-       <Router>
-      <NavTop logout={handleLogout}/>
-      <div className="App">
-        <Route
-          exact
-          path="/login"
-          handleLogin={handleLogin}
-          render={(props) => (
-            <Login
-              {...props}
-              user={user}
-              handleLogin={handleLogin}
-            />
-          )}
-        />
-        <ProtectedRoute
-          exact
-          path="/"
-          user={true}
-          handleLogout={handleLogout}
-          component={HomePage}
-        />
-         <ProtectedRoute
-          exact
-          path="/thread/:id"
-          user={true}
-          handleLogout={handleLogout}
-          component={Thread}
-        />
-         <Footer/>
-         </div>
-        
+      <Router>
+        <NavTop logout={handleLogout} />
+        <div className="App">
+          <Route
+            exact
+            path="/login"
+            handleLogin={handleLogin}
+            render={(props) => (
+              <Login {...props} user={user} handleLogin={handleLogin} />
+            )}
+          />
+          <ProtectedRoute
+            exact
+            path="/"
+            user={true}
+            handleLogout={handleLogout}
+            component={HomePage}
+          />
+          <ProtectedRoute
+            exact
+            path="/thread/:id"
+            user={true}
+            handleLogout={handleLogout}
+            component={Thread}
+          />
+          <Footer />
+        </div>
       </Router>
-      
-     
-      </div>
+    </div>
   );
 }
 

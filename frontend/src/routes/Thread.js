@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import NewlineText from "./utils/NewlineText";
+import {Helmet} from "react-helmet";
 import Pdf from "react-to-pdf";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -13,6 +14,7 @@ export default function Thread(props) {
   const [thread, setthread] = useState(null);
   const [list, setlist] = useState(null);
   const [notfound, setnotfound] = useState("");
+  const [loading, setloading] = useState(true)
   const logout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
@@ -22,6 +24,7 @@ export default function Thread(props) {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
+    localStorage.setItem("thread", props.match.params.id);
     if (token) {
       const options = {
         headers: { Authorization: token },
@@ -39,10 +42,12 @@ export default function Thread(props) {
             let arr = JSON5.parse(response.data.thread);
             console.log(arr);
             setlist(arr);
+            setloading(false)
           },
           (error) => {
             console.log(error.response.status);
             setnotfound(error.response.status);
+            setloading(false)
           }
         );
     } else {
@@ -79,6 +84,7 @@ export default function Thread(props) {
   };
   return (
     <div>
+        {loading &&"Loading"}
       {notfound == 401 && (
         <div class="alert alert-danger" role="alert">
           <h4 class="alert-heading">Session Expired</h4>
@@ -96,6 +102,11 @@ export default function Thread(props) {
 
       {thread ? (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{thread.title} | Threadunni</title>
+              
+            </Helmet>
           <div ref={ref} className={"bg"}>
             <img
               src={thread.owner_photo}

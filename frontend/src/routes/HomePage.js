@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tweet } from "react-twitter-widgets";
+import { Helmet } from "react-helmet";
 
 export default function HomePage(props) {
   const [tweetId, setTweetId] = useState(null);
@@ -10,12 +11,16 @@ export default function HomePage(props) {
 
   return (
     <div className="mx-auto pt-5 pb-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Threadunni</title>
+      </Helmet>
       <h5>Enter Id you Received from @threadunni</h5>
       <div class="input-group mb-3 pt-2 pb-2 mx-auto " style={{ width: "70%" }}>
         <input
           type="text"
           class="form-control"
-          placeholder="1395129241767976961"
+          placeholder="Example: 1395129241767976961"
           onChange={handleTweetId}
           aria-label="Id"
           aria-describedby="button-addon2"
