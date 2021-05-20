@@ -11,7 +11,7 @@ export default function Login(props) {
     let history = useHistory();
 
     const authHandler = (err, data) => {
-        // console.log(err, data);
+        console.log(err, data);
         
         if (data) {
           axios.post('https://threadunni.herokuapp.com/twitter/', {
