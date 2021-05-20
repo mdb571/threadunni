@@ -1,5 +1,25 @@
+
+:root{
+  --background: rgb(0,0,0);
+  --primary:rgb(29, 161, 242);
+  --text:#ffffff;
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 5 !important;
+  color: aliceblue;
+  border-top: 1px solid rgba(0,0,0,.1);}
+
 .App {
+  padding: 50px;
   text-align: center;
+}
+
+html body{
+  font-family: 'Farro', sans-serif;
+  background-color: var(--background) !important;
+  color: var(--text) !important;
 }
 
 .App-logo {
