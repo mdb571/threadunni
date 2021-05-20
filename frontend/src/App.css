@@ -4,14 +4,26 @@
   --primary:rgb(29, 161, 242);
   --text:#ffffff;
 }
-hr {
+.myhr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 5 !important;
   color: aliceblue;
   border-top: 1px solid rgba(0,0,0,.1);}
+  .list-group-item {
+    text-align: left;
+    position: relative;
+    font-size: 12px;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: var(--background);
+    border: 1px solid rgba(236, 233, 233, 0.125);
+}
 
+code{font-size: 15px;}
 .App {
+  min-height: 70vh;
   padding: 50px;
   text-align: center;
 }
@@ -26,7 +38,7 @@ html body{
   height: 40vmin;
   pointer-events: none;
 }
-
+.bg{background-color: var(--background);width:100%}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -7,12 +7,17 @@ import HomePage from "./routes/HomePage";
 import ProtectedRoute from "./routes/utils/ProtectedRoute";
 import NavTop from "./components/shared/NavTop";
 import Footer from "./components/shared/Footer";
+import Thread from "./routes/Thread";
 
 function App() {
   const [user, setUser] = useState(false);
 
   const handleLogin =  (e) => {
-    alert('Login')
+    let username= localStorage.getItem('username');
+    let token = localStorage.getItem('token')
+    
+    setUser(true)
+    // alert('Login')
   };
 
   const handleLogout = (e) => {
@@ -27,14 +32,15 @@ function App() {
   let token = localStorage.getItem('token')
   
   if(token){
-    setUser({username:username,token:token})
+    setUser(true)
   }
   }, [])
 
   return (
-    <div className="App">
-      <NavTop/>
-      <Router>
+    <div>
+       <Router>
+      <NavTop logout={handleLogout}/>
+      <div className="App">
         <Route
           exact
           path="/login"
@@ -50,13 +56,24 @@ function App() {
         <ProtectedRoute
           exact
           path="/"
-          user={user}
+          user={true}
           handleLogout={handleLogout}
           component={HomePage}
         />
+         <ProtectedRoute
+          exact
+          path="/thread/:id"
+          user={true}
+          handleLogout={handleLogout}
+          component={Thread}
+        />
+         <Footer/>
+         </div>
+        
       </Router>
-      <Footer/>
-    </div>
+      
+     
+      </div>
   );
 }
 
