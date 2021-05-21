@@ -7,6 +7,7 @@ import Pdf from "react-to-pdf";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Linkify from 'react-linkify';
+import './Gayathri-Regular'
 const JSON5 = require("json5");
 
 export default function Thread(props) {
@@ -58,7 +59,7 @@ export default function Thread(props) {
   let generatePDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(25);
-    doc.addFont("Farro", "Farro", "sans-serif");
+    doc.setFont('Gayathri-Regular', 'normal');
 
     doc.addImage(thread.owner_photo, "JPEG", 15, 20, 15, 15);
     doc.text(thread.title, 15, 50);
@@ -81,7 +82,16 @@ export default function Thread(props) {
       // push each tickcet's info into a row
       tableRows.push(tweetData);
     });
-    doc.autoTable(tableColumn, tableRows, { startY: 90 });
+    // tableColumn, tableRows, { startY: 90 }
+    doc.autoTable({
+      head: [[tableColumn]],
+      body: tableRows,
+      styles: {
+        font: 'Gayathri-Regular',    // <-- place name of your font here
+        fontStyle: 'normal',
+      },
+      margin: { top: 90 }
+  });
     doc.save(`threadunni_${thread.owner}_${props.match.params.id}`);
   };
   return (
@@ -95,11 +105,11 @@ export default function Thread(props) {
           <p>
             Internal Server Error <br />
             <br />
-            <Link to={"/"}>
+            {/* <Link to={"/"}>
               <button type="button" class="btn btn-outline-danger">
                 Home
               </button>
-            </Link>
+            </Link> */}
           </p>
         </div>
       )}
