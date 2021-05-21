@@ -8,6 +8,7 @@ import ProtectedRoute from "./routes/utils/ProtectedRoute";
 import NavTop from "./components/shared/NavTop";
 import Footer from "./components/shared/Footer";
 import Thread from "./routes/Thread";
+import MyThreads from "./routes/MyThreads";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -62,6 +63,13 @@ function App() {
             user={true}
             handleLogout={handleLogout}
             component={Thread}
+          />
+           <ProtectedRoute
+            exact
+            path="/mythreads/"
+            user={true}
+            handleLogout={handleLogout}
+            component={MyThreads}
           />
           <Footer />
         </div>

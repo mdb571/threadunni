@@ -6,6 +6,7 @@ import {Helmet} from "react-helmet";
 import Pdf from "react-to-pdf";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Linkify from 'react-linkify';
 const JSON5 = require("json5");
 
 export default function Thread(props) {
@@ -37,16 +38,16 @@ export default function Thread(props) {
         )
         .then(
           (response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setthread(response.data);
             let arr = JSON5.parse(response.data.thread);
-            console.log(arr);
+            // console.log(arr);
             setlist(arr);
             setloading(false)
           },
           (error) => {
-            console.log(error.response.status);
-            setnotfound(error.response.status);
+            // console.log(error.response?.status);
+            setnotfound(error.response?.status);
             setloading(false)
           }
         );
@@ -72,6 +73,7 @@ export default function Thread(props) {
         url: `http://${window.location.hostname}/thread/${props.match.params.id}`,
       }
     );
+    doc.addImage(thread.thread_thumbnail, "JPEG", 15, 72, 30, 15);
     const tableColumn = [thread.title];
     const tableRows = [];
     list.forEach((list) => {
@@ -79,12 +81,28 @@ export default function Thread(props) {
       // push each tickcet's info into a row
       tableRows.push(tweetData);
     });
-    doc.autoTable(tableColumn, tableRows, { startY: 70 });
+    doc.autoTable(tableColumn, tableRows, { startY: 90 });
     doc.save(`threadunni_${thread.owner}_${props.match.params.id}`);
   };
   return (
     <div>
+       
         {loading &&"Loading"}
+      
+        {notfound == 500 && (
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Error</h4>
+          <p>
+            Internal Server Error <br />
+            <br />
+            <Link to={"/"}>
+              <button type="button" class="btn btn-outline-danger">
+                Home
+              </button>
+            </Link>
+          </p>
+        </div>
+      )}
       {notfound == 401 && (
         <div class="alert alert-danger" role="alert">
           <h4 class="alert-heading">Session Expired</h4>
@@ -133,11 +151,17 @@ export default function Thread(props) {
               <p className="pt-2 text-muted small">File will be downloaded in default download folder</p>
             </div>
             <div>
+           
               <ul class="list-group">
+              <li class="list-group-item">
+                  <img src={thread.thread_thumbnail} width="38%"/>
+              </li>
                 {list &&
                   list.map((item, index) => (
                     <li key={index} class="list-group-item">
-                      <NewlineText key={index + 1} text={item} />
+                         <Linkify>
+                      <NewlineText key={item} text={item} />
+                      </Linkify>
                     </li>
                   ))}
               </ul>

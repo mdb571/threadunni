@@ -8,14 +8,13 @@ import { Helmet } from "react-helmet";
 let qs = require("qs");
 export default function Login(props) {
   const [user, setuser] = useState(false);
+  const [error, setError] = useState(false);
   let location = qs.parse(props.location.search, {
     ignoreQueryPrefix: true,
   }).redirect;
   let history = useHistory();
 
   const authHandler = (err, data) => {
-    console.log(err, data);
-
     if (data) {
       axios
         .post("https://threadunni.herokuapp.com/twitter/", {
@@ -24,7 +23,7 @@ export default function Login(props) {
         })
         .then(
           (response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setuser(true);
             localStorage.setItem(
               "token",
@@ -38,10 +37,16 @@ export default function Login(props) {
           },
           (error) => {
             console.log(error);
+            setError(error);
           }
         );
 
       localStorage.setItem("token", data.oauth_token);
+    }
+
+    if (err) {
+      console.log(err);
+      setError(err);
     }
   };
   return (
@@ -50,6 +55,20 @@ export default function Login(props) {
         <meta charSet="utf-8" />
         <title>Login | ThreadUnni</title>
       </Helmet>
+      {error && (
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Error</h4>
+          <p>
+            {error} <br />
+            <br />
+            {/* <Link to={"/"}>
+              <button type="button" class="btn btn-outline-danger">
+                Home
+              </button>
+            </Link> */}
+          </p>
+        </div>
+      )}
       <h3>Login | ThreadUnni</h3>
       <p className="text-muted">Documenting Threads Since BFH!</p>
       <p>
@@ -62,6 +81,7 @@ export default function Login(props) {
         {!user ? (
           <TwitterLogin
             authCallback={authHandler}
+            buttonTheme={'dark'}
             consumerKey={process.env.REACT_APP_TWITTER_API_KEY}
             consumerSecret={process.env.REACT_APP_TWITTER_CONSUMER_SECRET}
           />

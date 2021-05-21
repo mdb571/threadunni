@@ -22,6 +22,9 @@ export default function NavTop(props) {
       {localStorage.getItem("username") && <li class="nav-item active">
         <a class="nav-link" href={`https://twitter.com/${localStorage.getItem("username")}`}>{`Hi @${localStorage.getItem("username")} `}</a>
       </li>}
+      {localStorage.getItem("username") && <li class="nav-item">
+        <Link class="nav-link" to={`/mythreads`}>My Threads</Link>
+      </li>}
      {localStorage.getItem("username") &&  <li class="nav-item">
         <p class="nav-link" href="#"onClick={logout}>Logout</p>
       </li>}

@@ -33,7 +33,28 @@ html body{
   background-color: var(--background) !important;
   color: var(--text) !important;
 }
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(52,58,64);
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+.card-title{
 
+  height: 50px;
+}
+
+.card-text{
+
+  height: 150px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -45,6 +66,11 @@ html body{
   }
 }
 
+.card a {
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: transparent;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
