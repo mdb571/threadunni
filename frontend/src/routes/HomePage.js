@@ -69,7 +69,7 @@ export default function HomePage(props) {
           )}
           <div class="row">
             <div class="col-sm pt-5 mx-auto">
-              <Tweet tweetId="1395620743564599296" />
+              <Tweet tweetId="1395623998650609669" />
             </div>
             <div class="col-sm">
               <div className="pt-5 pb-5">
