@@ -20,7 +20,7 @@ export default function NavTop(props) {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav pt-3">
       {localStorage.getItem("username") && <li class="nav-item active">
-        <a class="nav-link" href={`https://twitter.com/${localStorage.getItem("username")}`}>{`Hi @${localStorage.getItem("username")} `}</a>
+        <a class="nav-link" target="_blank" href={`https://twitter.com/${localStorage.getItem("username")}`}>{`Hi @${localStorage.getItem("username")} `}</a>
       </li>}
       {localStorage.getItem("username") && <li class="nav-item">
         <Link class="nav-link" to={`/mythreads`}>My Threads</Link>
