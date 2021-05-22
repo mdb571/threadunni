@@ -13,7 +13,6 @@ export default function MyThreads(props) {
   const logout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
-    localStorage.setItem("thread", props.match.params.id);
     history.push("/login");
   };
 
