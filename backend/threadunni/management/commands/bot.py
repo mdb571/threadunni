@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-web_url='https://savethreads.vercel.app/thread/'
+web_url='https://threadunni.tech/thread/'
 
 class Command(BaseCommand):
     help='Script to reply to mentions'
