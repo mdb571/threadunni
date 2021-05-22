@@ -13,7 +13,7 @@ export default function NavTop(props) {
     <div className="pb-3">
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-  <a className="navbar-brand" href="/">ThreadUnni Bot</a>
+  <a className="navbar-brand" href="/">ThreadUnni</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
