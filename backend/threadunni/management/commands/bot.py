@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
+web_url='https://savethreads.vercel.app/thread/'
+
 class Command(BaseCommand):
     help='Script to reply to mentions'
 
@@ -129,7 +131,7 @@ class Command(BaseCommand):
                             Thread.objects.filter(thread_id=status.in_reply_to_status_id).first().username.add(thread_reader)
                         
                         api.update_status(
-                        status=f'@{status.user.screen_name} Your collected thread is ready '+ str(status.in_reply_to_status_id),
+                        status=f'@{status.user.screen_name} Your collected thread is ready '+web_url+ str(status.in_reply_to_status_id),
                         in_reply_to_status_id=tweet.id,
                         auto_populate_reply_metadata=True
                     )
@@ -148,7 +150,7 @@ class Command(BaseCommand):
                     try:
                         thum_url = main.entities['media'][0]['media_url_https']
                     except Exception:
-                        thum_url="Default Link"
+                        thum_url="https://www.magisto.com/blog/wp-content/uploads/2019/03/Twitter.jpg"
                         pass
 
                     content_text=list()
@@ -183,14 +185,17 @@ class Command(BaseCommand):
                             print(e)
                         
                     title="A Thread by "+ owner_name
+                    thread_id=str(thread_id)
                     new_thread=Thread(thread_id=thread_id,thread=content_text,link="/thread/"+str(thread_id),owner=owner_name,owner_photo=photo,title=title,thread_thumbnail=thum_url,media_url=media_url)
                     logger.info("Thread Created")
                     api.update_status(
-                        status=f'@{status.user.screen_name} Your collected thread is ready '+ str(thread_id),
+                        status=f'@{status.user.screen_name} Your collected thread is ready '+web_url+ str(thread_id),
                         in_reply_to_status_id=tweet.id,
                         auto_populate_reply_metadata=True
                     )
+                    thread_reader = User.objects.filter(username=thread_requester).first()
                     new_thread.save()
+                    new_thread.username.add(thread_reader)
                     logger.info("Thread Replied")
         return 
 

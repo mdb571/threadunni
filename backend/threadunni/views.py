@@ -43,3 +43,14 @@ class ThreadView(APIView):
 
 
 
+class UserThreadView(APIView):
+    permission_classes = [IsAuthenticated,]
+
+    def get_object(self):
+        user=User.objects.get(username=self.request.user.username)
+        return Thread.objects.filter(username=user)
+
+    def get(self,request,*args,**kwargs):
+        serializer = ThreadSerializer(self.get_object(),many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
