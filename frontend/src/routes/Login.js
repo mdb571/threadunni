@@ -69,7 +69,7 @@ export default function Login(props) {
           </p>
         </div>
       )}
-      <h3>Login | ThreadUnni</h3>
+      <h3>Login</h3>
       <p className="text-muted">Documenting Threads Since BFH!</p>
       <p>
         <small className="text-danger">

@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
-# Create your models here.
+
 
 
 
@@ -56,8 +56,8 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 class Thread(models.Model):
 
-    username=models.ManyToManyField(User,default=1)
-    thread_id=models.IntegerField(unique=True)
+    username=models.ManyToManyField(User)
+    thread_id=models.CharField(max_length=250,unique=True)
     thread=models.TextField()
     link=models.CharField(max_length=250,unique=True)
     owner=models.CharField(max_length=64)
@@ -65,7 +65,9 @@ class Thread(models.Model):
     title=models.CharField(max_length=256,default='Thread')
     thread_thumbnail=models.CharField(max_length=250)
     media_url=models.CharField(max_length=250,default="")
+    created_at=models.DateTimeField(auto_now_add=True)
 
+    
     def __str__(self):
         return self.owner
 
