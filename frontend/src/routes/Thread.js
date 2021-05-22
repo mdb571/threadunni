@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import NewlineText from "./utils/NewlineText";
 import {Helmet} from "react-helmet";
-import Pdf from "react-to-pdf";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import Linkify from 'react-linkify';
 import './Gayathri-Regular'
 const JSON5 = require("json5");
 const detectlanguage = require("language-identifier");
@@ -63,46 +61,57 @@ export default function Thread(props) {
   }, []);
   let generatePDF = () => {
 
-    if (language== "English"|| "Malayalam"||'English | Spanish | Basic Latin') {
+
+   switch (language) {
+     case 'English | Spanish | Basic Latin':
+     case 'Malayalam':
+     case 'English':
       const doc = new jsPDF();
-    doc.setFontSize(25);
-    doc.setFont('Gayathri-Regular', 'normal');
-
-    doc.addImage(thread.owner_photo, "JPEG", 15, 20, 15, 15);
-    doc.text(thread.title, 15, 50);
-
-    doc.setFontSize(8);
-    doc.text("Downloaded from ThreadUnni", 15, 62);
-    doc.textWithLink(
-      `${window.location.hostname}/thread/${props.match.params.id}`,
-      15,
-      67,
-      {
-        url: `http://${window.location.hostname}/thread/${props.match.params.id}`,
+      doc.setFontSize(25);
+      if(language=='Malayalam'){
+        doc.setFont('Gayathri-Regular', 'normal');
       }
-    );
-    doc.addImage(thread.thread_thumbnail, "JPEG", 15, 72, 30, 15);
-    const tableColumn = [thread.title];
-    const tableRows = [];
-    list.forEach((list) => {
-      const tweetData = [list];
-      // push each tickcet's info into a row
-      tableRows.push(tweetData);
+  
+      doc.addImage(thread.owner_photo, "JPEG", 15, 20, 15, 15);
+      doc.text(thread.title, 15, 50);
+  
+      doc.setFontSize(8);
+      doc.text("Downloaded from ThreadUnni", 15, 62);
+      doc.textWithLink(
+        `${window.location.hostname}/thread/${props.match.params.id}`,
+        15,
+        67,
+        {
+          url: `http://${window.location.hostname}/thread/${props.match.params.id}`,
+        }
+      );
+      doc.addImage(thread.thread_thumbnail, "JPEG", 15, 72, 30, 15);
+      const tableColumn = [thread.title];
+      const tableRows = [];
+      list.forEach((list) => {
+        const tweetData = [list];
+        // push each tickcet's info into a row
+        tableRows.push(tweetData);
+      });
+      // tableColumn, tableRows, 
+      doc.autoTable({
+        head: [[tableColumn]],
+        body: tableRows,
+        styles: {
+          font: 'Gayathri-Regular',    // <-- place name of your font here
+          fontStyle: 'normal',
+        },
+        startY: 90 
     });
-    // tableColumn, tableRows, { startY: 90 }
-    doc.autoTable({
-      head: [[tableColumn]],
-      body: tableRows,
-      styles: {
-        font: 'Gayathri-Regular',    // <-- place name of your font here
-        fontStyle: 'normal',
-      },
-      margin: { top: 90 }
-  });
-    doc.save(`threadunni_${thread.owner}_${props.match.params.id}`);
-    } else {
+      doc.save(`threadunni_${thread.owner}_${props.match.params.id}`);
+       break;
+   
+     default:
       alert(`Unsupported Language (${language}) detected`)
-    }
+       break;
+   }
+ 
+
     
   };
   return (

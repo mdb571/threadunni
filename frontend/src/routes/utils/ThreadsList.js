@@ -1,7 +1,6 @@
 import json5 from "json5";
 import React from "react";
 import { Link } from "react-router-dom";
-import NewlineText from "./NewlineText";
 import ClampLines from "react-clamp-lines";
 import moment from "moment";
 
