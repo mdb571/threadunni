@@ -1,18 +1,76 @@
+
+:root{
+  --background: rgb(0,0,0);
+  --primary:rgb(29, 161, 242);
+  --text:#ffffff;
+}
+.myhr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 5 !important;
+  color: aliceblue;
+  border-top: 1px solid rgba(0,0,0,.1);}
+  .list-group-item {
+    text-align: left;
+    position: relative;
+    font-size: 12px;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: var(--background);
+    border: 1px solid rgba(236, 233, 233, 0.125);
+}
+
+code{font-size: 15px;}
 .App {
+  min-height: 70vh;
+  padding: 10px;
   text-align: center;
 }
 
+html body{
+  font-family: 'Farro', sans-serif;
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(52,58,64);
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+.card-title{
+
+  height: 50px;
+}
+
+.card-text{
+
+  height: 150px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.bg{background-color: var(--background);width:100%}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+.card a {
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: transparent;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
