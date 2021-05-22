@@ -31,18 +31,18 @@ export default function HomePage(props) {
         <title>Home | Threadunni</title>
       </Helmet>
       <h5>Enter Link of Thread Received from @threadunni</h5>
-      <div class="input-group mb-3 pt-2 pb-2 mx-auto " style={{ width: "70%" }}>
+      <div className="input-group mb-3 pt-2 pb-2 mx-auto " style={{ width: "70%" }}>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Example: https://savethreads.vercel.app/thread/1393663472446148609"
           onChange={handleTweetId}
           aria-label="Id"
           aria-describedby="button-addon2"
         />
-        <div class="input-group-append">
+        <div className="input-group-append">
           <button
-            class="btn btn-outline-secondary"
+            className="btn btn-outline-secondary"
             type="button"
             id="button-addon2"
           >
@@ -62,55 +62,55 @@ export default function HomePage(props) {
             to={`/thread/1395137928809095176`}
           >{`${window.location.hostname}/thread/1395137928809095176`}</Link>
         </p>
-        <div class="container" style={{ paddingTop: "10vh" }}>
+        <div className="container" style={{ paddingTop: "10vh" }}>
           <MyThreads slice={3} more={true}/>
           {/* {!localStorage.getItem("username") && (
             <div
               style={{ width: "45%" }}
-              class="mx-auto alert alert-danger mb-5"
+              className="mx-auto alert alert-danger mb-5"
               role="alert"
             >
               Please login to continue.{" "}
               <Link to={"/login"}>
-                <button type="button" class="btn btn-outline-danger">
+                <button type="button" className="btn btn-outline-danger">
                   Login
                 </button>
               </Link>
             </div>
           )} */}
-          <div class="row">
-            <div class="col-sm pt-5 mx-auto">
+          <div className="row">
+            <div className="col-sm pt-5 mx-auto">
               <Tweet tweetId="1395668626175262723" />
               {/* <Tweet tweetId="1395623998650609669" /> */}
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <div className="pt-5 pb-5">
                 <h3 className="text-left">How to use?</h3>
                 <div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
                       Twitter thread is series of tweets by the same author
                       connected with a line!
                     </li>
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                       From any tweet in the thread, mention us with a keyword{" "}
                       <br />
                       <code> @threadunni save</code>
                     </li>
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                       Follow{" "}
                       <a href="https://twitter.com/threadunni" target="_blank">
                         @threadunni
                       </a>{" "}
                       to mention us easily!
                     </li>
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                       Then wait for @threadunni to reply with an id or link
                     </li>
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                       Give id here or follow link to get your thread
                     </li>
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                       Save thread as PDF if needed
                     </li>
                   </ul>

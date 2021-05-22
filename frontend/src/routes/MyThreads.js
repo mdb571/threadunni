@@ -46,13 +46,13 @@ export default function MyThreads(props) {
     <div>
       {loading && "Loading"}
       {notfound == 500 && (
-        <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Error</h4>
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error</h4>
           <p>
             Internal Server Error <br />
             <br />
             <Link to={"/"}>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" className="btn btn-outline-danger">
                 Home
               </button>
             </Link>
@@ -65,13 +65,13 @@ export default function MyThreads(props) {
         </div>
       )}
       {notfound == 401 && (
-        <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Session Expired</h4>
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Session Expired</h4>
           <p>
             Please login again to continue <br />
             <br />
             <Link to={"/login"}>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" className="btn btn-outline-danger">
                 Login
               </button>
             </Link>
@@ -94,7 +94,7 @@ export default function MyThreads(props) {
             <div className="p-5">
               {props.more && (
                 <Link to={"/mythreads"}>
-                  <button type="button" class="btn btn-outline-dark">
+                  <button type="button" className="btn btn-outline-dark">
                     View All
                   </button>
                 </Link>
@@ -104,13 +104,13 @@ export default function MyThreads(props) {
         </div>
       ) : (
         notfound == 404 && (
-          <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Thread Not Found</h4>
+          <div className="alert alert-danger" role="alert">
+            <h4 className="alert-heading">Thread Not Found</h4>
             <p>
               Check thread id <br />
               <br />
               <Link to={"/"}>
-                <button type="button" class="btn btn-outline-danger">
+                <button type="button" className="btn btn-outline-danger">
                   Go Home
                 </button>
               </Link>

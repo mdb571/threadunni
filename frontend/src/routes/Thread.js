@@ -9,6 +9,7 @@ import "jspdf-autotable";
 import Linkify from 'react-linkify';
 import './Gayathri-Regular'
 const JSON5 = require("json5");
+const detectlanguage = require("language-identifier");
 
 export default function Thread(props) {
   const ref = React.createRef();
@@ -17,6 +18,8 @@ export default function Thread(props) {
   const [list, setlist] = useState(null);
   const [notfound, setnotfound] = useState("");
   const [loading, setloading] = useState(true)
+  const [language, setlanguage] = useState('')
+  
   const logout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
@@ -42,8 +45,10 @@ export default function Thread(props) {
             // console.log(response.data);
             setthread(response.data);
             let arr = JSON5.parse(response.data.thread);
-            // console.log(arr);
             setlist(arr);
+            const languageName = detectlanguage.identify(response.data.thread);
+            setlanguage(languageName)
+            
             setloading(false)
           },
           (error) => {
@@ -57,7 +62,9 @@ export default function Thread(props) {
     }
   }, []);
   let generatePDF = () => {
-    const doc = new jsPDF();
+
+    if (language== "English"|| "Malayalam"||'English | Spanish | Basic Latin') {
+      const doc = new jsPDF();
     doc.setFontSize(25);
     doc.setFont('Gayathri-Regular', 'normal');
 
@@ -93,6 +100,10 @@ export default function Thread(props) {
       margin: { top: 90 }
   });
     doc.save(`threadunni_${thread.owner}_${props.match.params.id}`);
+    } else {
+      alert(`Unsupported Language (${language}) detected`)
+    }
+    
   };
   return (
     <div>
@@ -100,13 +111,13 @@ export default function Thread(props) {
         {loading &&"Loading"}
       
         {notfound == 500 && (
-        <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Error</h4>
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error</h4>
           <p>
             Internal Server Error <br />
             <br />
             {/* <Link to={"/"}>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" className="btn btn-outline-danger">
                 Home
               </button>
             </Link> */}
@@ -114,13 +125,13 @@ export default function Thread(props) {
         </div>
       )}
       {notfound == 401 && (
-        <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Session Expired</h4>
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Session Expired</h4>
           <p>
             Please login again to continue <br />
             <br />
             <Link to={"/login"}>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" className="btn btn-outline-danger">
                 Login
               </button>
             </Link>
@@ -140,7 +151,7 @@ export default function Thread(props) {
               src={thread.owner_photo}
               alt={thread.owner}
               width="50px"
-              class="rounded-circle"
+              className="rounded-circle"
             />
             <h4> {thread.title}</h4>
             
@@ -153,25 +164,26 @@ export default function Thread(props) {
             <div className="pt-5 pb-5">
               <button
                 type="button"
-                class="btn btn-outline-success"
+                className="btn btn-outline-success"
                 onClick={generatePDF}
               >
                 Generate Pdf
               </button>
               <p className="pt-2 text-muted small">File will be downloaded in default download folder</p>
+              <p className="pt-2 text-muted small">{`Tweet Language ${language}`}</p>
             </div>
             <div>
            
-              <ul class="list-group">
-              <li class="list-group-item">
+              <ul className="list-group">
+              <li className="list-group-item">
                   <img src={thread.thread_thumbnail} width="38%"/>
               </li>
                 {list &&
                   list.map((item, index) => (
-                    <li key={index} class="list-group-item">
-                         <Linkify>
-                      <NewlineText key={item} text={item} />
-                      </Linkify>
+                    <li key={item} className="list-group-item">
+                         
+                      <NewlineText text={item} />
+                      
                     </li>
                   ))}
               </ul>
@@ -180,13 +192,13 @@ export default function Thread(props) {
         </div>
       ) : (
         notfound == 404 && (
-          <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Thread Not Found</h4>
+          <div className="alert alert-danger" role="alert">
+            <h4 className="alert-heading">Thread Not Found</h4>
             <p>
               Check thread id <br />
               <br />
               <Link to={"/"}>
-                <button type="button" class="btn btn-outline-danger">
+                <button type="button" className="btn btn-outline-danger">
                   Go Home
                 </button>
               </Link>

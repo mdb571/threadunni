@@ -12,21 +12,21 @@ export default function NavTop(props) {
   return (
     <div className="pb-3">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-  <a class="navbar-brand" href="/">ThreadUnni Bot</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+  <a className="navbar-brand" href="/">ThreadUnni Bot</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav pt-3">
-      {localStorage.getItem("username") && <li class="nav-item active">
-        <a class="nav-link" target="_blank" href={`https://twitter.com/${localStorage.getItem("username")}`}>{`Hi @${localStorage.getItem("username")} `}</a>
+  <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul className="navbar-nav pt-3">
+      {localStorage.getItem("username") && <li className="nav-item active">
+        <a className="nav-link" target="_blank" href={`https://twitter.com/${localStorage.getItem("username")}`}>{`Hi @${localStorage.getItem("username")} `}</a>
       </li>}
-      {localStorage.getItem("username") && <li class="nav-item">
-        <Link class="nav-link" to={`/mythreads`}>My Threads</Link>
+      {localStorage.getItem("username") && <li className="nav-item">
+        <Link className="nav-link" to={`/mythreads`}>My Threads</Link>
       </li>}
-     {localStorage.getItem("username") &&  <li class="nav-item">
-        <p class="nav-link" href="#"onClick={logout}>Logout</p>
+     {localStorage.getItem("username") &&  <li className="nav-item">
+        <p className="nav-link" href="#"onClick={logout}>Logout</p>
       </li>}
       
     </ul>

@@ -56,13 +56,13 @@ export default function Login(props) {
         <title>Login | ThreadUnni</title>
       </Helmet>
       {error && (
-        <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Error</h4>
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error</h4>
           <p>
             {error} <br />
             <br />
             {/* <Link to={"/"}>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" className="btn btn-outline-danger">
                 Home
               </button>
             </Link> */}
@@ -72,7 +72,7 @@ export default function Login(props) {
       <h3>Login | ThreadUnni</h3>
       <p className="text-muted">Documenting Threads Since BFH!</p>
       <p>
-        <small class="text-danger">
+        <small className="text-danger">
           {" "}
           Login to access your threads and archive PDFs.{" "}
         </small>
