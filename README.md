@@ -1,3 +1,4 @@
+![BFH Banner](https://trello-attachments.s3.amazonaws.com/542e9c6316504d5797afbfb9/542e9c6316504d5797afbfc1/39dee8d993841943b5723510ce663233/Frame_19.png)
 <div align="center"><img width="150" src="frontend/public/logo.png" /></div>
 <h1 align="center">Threadunni</h1>
 <p align="center">Open source web app and twitter bot that lets you read threads more easily and document them</p>
@@ -7,11 +8,30 @@
 </div>
 <h3 align="center">Made by <a href="https://github.com/mdb571">@mdb571⚡</a> & <a href="https://github.com/bmnidhin">@bmnidhin:rocket:</a></h3>
 
+## Team Id
+BFH/rec1OO1hnriJUrdCu/2021
+
+## Link to product walkthrough
+
+
+## How it works ?
+- User tags `@threadunni` bot under the thread to be saved
+- Threadunni fetches the thread using twitter api and saves it in the dashboard as a blog post (usually takes about 3 minutes for the bot to reply)
+- User logins to the dashboard using twitter and can view his saved threads or download them as a PDF document
 ## Features
 - Pull tagged threads from twitter using [twitter](https://developer.twitter.com/en/docs/twitter-api) API
 - Read and Save threads as a blog post
 - Download threads as a PDF
 - Social Login Using Twitter
+
+## Libraries used
+### Frontend
+- react : 17.0.2
+- jspdf : 2.3.1 (for pdf generation)
+### Backend
+- djangorestframework : 3.12.4
+- tweepy : 3.10.0
+
 
 ## Setup
 ### Frontend
@@ -27,7 +47,7 @@
 - run the server with `python manage.py runserver`
 - Now you can start sending requests from the frontend to the backend API
 
-[live demo](https://savethreads.vercel.app) 
+[live demo](https://threadunni.tech) 
 ## Screenshots
 Homepage
 <div>
