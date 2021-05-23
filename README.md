@@ -16,8 +16,8 @@ BFH/rec1OO1hnriJUrdCu/2021
 
 ## How it works ?
 - User tags `@threadunni` bot under the thread to be saved
-- Threadunni fetches the thread using twitter api and saves it in the dashboard as a blog post (usually takes about 3 minutes for the bot to reply)
-- User logins to the dashboard using twitter and can view his saved threads or download them as a PDF document
+- Threadunni fetches the thread using twitter api and saves it in the [dashboard](https://www.threadunni.tech/) as a blog post (usually takes about 3 minutes for the bot to reply)
+- User logins to the [dashboard](https://www.threadunni.tech/) using twitter and can view his saved threads or download them as a PDF document
 ## Features
 - Pull tagged threads from twitter using [twitter](https://developer.twitter.com/en/docs/twitter-api) API
 - Read and Save threads as a blog post
