@@ -28,6 +28,7 @@ BFH/rec1OO1hnriJUrdCu/2021
 ### Frontend
 - react : 17.0.2
 - jspdf : 2.3.1 (for pdf generation)
+- axios : 0.21.1 (api calls)
 ### Backend
 - djangorestframework : 3.12.4
 - tweepy : 3.10.0
