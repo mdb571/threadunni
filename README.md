@@ -43,6 +43,7 @@ BFH/rec1OO1hnriJUrdCu/2021
   Builds the app for production to the `build` folder 
   
 ### Backend 
+- Export the Keys list in [.env](/.env)
 - Install the required python libraries `pip install -r requirements.txt`
 - Run the bot with `python manage.py bot`
 - run the server with `python manage.py runserver`
