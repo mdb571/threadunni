@@ -12,7 +12,7 @@
 BFH/rec1OO1hnriJUrdCu/2021
 
 ## Link to product walkthrough
-
+[Walkthrough](https://www.youtube.com/watch?v=BdOnuaPp_Lg)
 
 ## How it works ?
 - User tags `@threadunni` bot under the thread to be saved
