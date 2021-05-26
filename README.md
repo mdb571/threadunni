@@ -33,6 +33,7 @@ BFH/rec1OO1hnriJUrdCu/2021
 - djangorestframework : 3.12.4
 - tweepy : 3.10.0
 
+Refer package.json and requirements.txt respectively for more details
 
 ## Setup
 ### Frontend
