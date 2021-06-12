@@ -17,7 +17,7 @@ export default function Login(props) {
   const authHandler = (err, data) => {
     if (data) {
       axios
-        .post("https://threadunni-replit.mdb571.repl.co//twitter/", {
+        .post("https://threadunni-replit.mdb571.repl.co/twitter/", {
           access_token_key: data.oauth_token,
           access_token_secret: data.oauth_token_secret,
         })
