@@ -23,7 +23,7 @@ export default function MyThreads(props) {
         headers: { Authorization: token },
       };
 
-      axios.get(`https://threadunni.herokuapp.com/threads/`, options).then(
+      axios.get(`https://threadunni-replit.mdb571.repl.co/threads/`, options).then(
         (response) => {
         //   console.log(response.data);
         //   setthread([]);
