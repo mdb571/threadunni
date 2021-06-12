@@ -41,7 +41,7 @@ export default function Thread(props) {
 
       axios
         .get(
-          `https://threadunni.herokuapp.com/thread/${props.match.params.id}/`,
+          `https://threadunni-replit.mdb571.repl.co/thread/${props.match.params.id}/`,
           options
         )
         .then(
