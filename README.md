@@ -8,12 +8,6 @@
 </div>
 <h3 align="center">Made by <a href="https://github.com/mdb571">@mdb571⚡</a> & <a href="https://github.com/bmnidhin">@bmnidhin:rocket:</a></h3>
 
-## Team Id
-BFH/rec1OO1hnriJUrdCu/2021
-
-## Link to product walkthrough
-[Walkthrough](https://www.youtube.com/watch?v=BdOnuaPp_Lg)
-
 ## How it works ?
 - User tags `@threadunni` bot under the thread to be saved
 - Threadunni fetches the thread using twitter api and saves it in the [dashboard](https://www.threadunni.tech/) as a blog post (usually takes about 3 minutes for the bot to reply)
