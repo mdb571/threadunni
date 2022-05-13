@@ -24,7 +24,7 @@
     "react-helmet": "^6.1.0",
     "react-linkify": "^1.0.0-alpha",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "react-to-pdf": "0.0.14",
     "react-twitter-login": "^1.4.0",
     "react-twitter-widgets": "^1.10.0",
